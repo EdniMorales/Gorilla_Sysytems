@@ -18,13 +18,6 @@ People use GitHub to build some of the most advanced technologies in the world. 
 
 <footer>
 
-<!--
-  <<< Author notes: Footer >>>
-  Add a link to get support, GitHub status page, code of conduct, license link.
--->
-
----
-
 Saber mas: [Contactate con Nosotros](https://github.com/orgs/skills/discussions/categories/introduction-to-github)
 
 &copy; 2024 Gorilla Systems

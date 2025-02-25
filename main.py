@@ -1,6 +1,16 @@
-print("Cambio realizado en main.py")
+import flet as ft
 
-def Hello_word(str: str):
-    print(str)
+import controller as ctrl
+import view as vw
 
-cosa = Hello_word("print")
+def main(page: ft.Page):
+    """Inicializador de la aplicacion"""
+
+    view = vw.View(page)
+    controller = ctrl.Controller(view)
+    
+    view.controller = controller
+    view.Start_App()
+
+if __name__ == "__main__":
+    ft.app(target=main)
