@@ -1,28 +1,23 @@
+<IfModule mod_rewrite.c>
+    # Activar reescritura de URLs
+    RewriteEngine On
 
+    # Redirigir si NO es archivo o directorio existente
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
 
+    # Si se accede a /controlador/accion
+    RewriteRule ^([^/]+)/([^/]+)?$ index.php?controller=$1&action=$2 [QSA,L]
 
-<ifModule mod_rewrite.c>
-
-#activar rewrite
-RewriteEngine on
-#ErrorDocument 404 http://localhost/views/error/error404.php
-
-#comprobar las url que no sea un directorio o un fichero
-RewriteCond %{SCRIPT_FILENAME} !-d
-RewriteCond %{SCRIPT_FILENAME} !-f
-
-#regla de escritura
-RewriteRule ^(.*)/(.*) index.php?controller=$1&action=$2
-
-RewriteCond %{HTTP_HOST} ^teampcmx\.com [NC]
-RewriteCond %{SERVER_PORT} 80
-RewriteRule ^(.*)$ https://teampcmx.com/$1 [R,L]
-
-</ifModule>
-
-# php -- BEGIN cPanel-generated handler, do not edit
-# Configure el paquete “ea-php81” como el lenguaje de programación predeterminado “PHP”.
-<IfModule mime_module>
-  AddHandler application/x-httpd-ea-php81___lsphp .php .php8 .phtml
+    # Si se accede a la raíz (sin controlador ni acción)
+    RewriteRule ^$ index.php [QSA,L]
 </IfModule>
-# php -- END cPanel-generated handler, do not edit
+
+# 👇 OPCIONAL: redirección forzada a HTTPS para hosting, desactiva localmente
+# RewriteCond %{HTTPS} off
+# RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# ❌ OPCIONAL: Esta línea viene de cPanel. Coméntala o elimínala para uso local.
+# <IfModule mime_module>
+#   AddHandler application/x-httpd-ea-php81___lsphp .php .php8 .phtml
+# </IfModule>

@@ -9,8 +9,13 @@ if (!isset($_GET['controller']) && !isset($_GET['action'])) {
     exit();
 }
 
-// se coloca aqui por que si no no redirige
-require_once 'views/layout/head.php';  // cabecera de la pagina
+if ($_GET['controller'] != "principal"){
+    // se coloca aqui por que si no no redirige
+    require_once 'views/layout/head.php';  // cabecera de la pagina
+}else{
+    // se coloca aqui por que si no no redirige
+    require_once 'views/layout/load.php';  // cabecera de la pagina
+}
 
 function show_error(){
     $error = new ErrorController();
@@ -43,5 +48,7 @@ if(class_exists($nombreControlador)){
     show_error();
 }
 
-require_once 'views/layout/footer.php';
+if ($_GET['controller'] != "principal"){
+    require_once 'views/layout/footer.php';
+}
 ?>
