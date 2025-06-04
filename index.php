@@ -2,11 +2,10 @@
 
 require_once 'autoload.php';
 require_once 'config/parameters.php';
-/* require_once 'controllers/PrincipalController.php'; */
 
 // Redirige si no hay controlador ni acción
 if (!isset($_GET['controller']) && !isset($_GET['action'])) {
-    header('Location: ' . base_url . 'Principal/index');
+    header('Location: ' . base_url . 'principal/index');
     exit();
 }
 
